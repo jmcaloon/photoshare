@@ -1,14 +1,8 @@
 ######################################
-# author ben lawson <balawson@bu.edu> 
+#Skeleton code can be found at: https://github.com/benlawson/Photoshare-Skeleton
+#The rest of the code is written by Jessica McAloon <mcaloonj@bu.edu>
 ######################################
-# Some code adapted from 
-# CodeHandBook at http://codehandbook.org/python-web-application-development-using-flask-and-mysql/
-# and MaxCountryMan at https://github.com/maxcountryman/flask-login/
-# and Flask Offical Tutorial at  http://flask.pocoo.org/docs/0.10/patterns/fileuploads/
-# see links for further understanding
 
-#Jessica McAloon <mcaloonj@bu.edu>
-###################################################
 
 import flask
 from flask import Flask, Response, request, render_template, redirect, url_for, flash, Markup
@@ -28,7 +22,7 @@ app.secret_key = 'super secret string'  # Change this!
 
 #These will need to be changed according to your creditionals
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'database_dude'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'change_to_your_password'
 app.config['MYSQL_DATABASE_DB'] = 'photoshare'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
@@ -73,12 +67,6 @@ def request_loader(request):
     user.is_authenticated = request.form['password'] == pwd 
     return user
 
-'''
-A new page looks like this:
-@app.route('new_page_name')
-def new_page_function():
-    return new_page_html
-'''
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
