@@ -1,0 +1,56 @@
+<!doctype html>
+
+{% if message %}
+  <h4>{{message}}</h4>
+{% endif %}
+
+<img src='data:image/png;base64, {{imgdata}}'/> <br>
+
+Caption: {{caption}}
+{% if owner %}
+ <a href="/add_caption/{{photo_id}}"><button>Update Caption!</button></a><br>
+{% endif %}
+<p>Likes: {{num_likes}} </p>
+
+
+ Tags:  
+            {% set count = 0 %}
+            {% for tag in tags %}
+                {{tag}}
+                {% set count = count + 1 %}  
+            {% endfor %}
+        {% if owner %}
+        <a href="/add_tags/{{photo_id}}"><button>Add new tags to this photo!</button></a><br>
+        {% endif %}
+
+{% if comment_attributes %}
+    <p>Comments: </p>
+    <ul style="list-style: none;">
+    {% for comment in comment_attributes %}
+            <li> From {{comment[0]}} on {{comment[2]}}: {{comment[1]}}</li>
+            <br>
+    {% endfor %}
+    </ul>
+{% endif %}
+<br>
+
+<a href="/like_or_comment/{{photo_id}}"><button>Like or Comment</button></a><br>
+
+{% if owner %}
+<a href="/delete_photo/{{photo_id}}"><button>Delete this Photo</button></a> <br>
+{% endif %}
+
+
+
+
+<br>
+<a href='/'>Home</a>
+
+
+<style>
+img {
+  width:  350px;
+  height: auto;
+}
+
+</style>

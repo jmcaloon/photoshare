@@ -1,0 +1,29 @@
+<!doctype html>
+
+{% if message %}
+  <h4>{{message}}</h4>
+{% endif %}
+
+<h1> Here's the photos in {{ album_name }} </h1>
+<p> Click on a photo to interact with it! </p>
+
+{% if photos %}
+    <ul style="list-style: none;">
+    {% for photo in photos %}
+
+
+        <li><a href="/photo/{{photo[1]}}">
+
+        <img src='data:image/png;base64, {{photo[0]}}'/></a></li><br>
+
+    {% endfor %}
+    </ul>
+{% endif %}
+<a href='/'>Home</a>
+<style>
+img {
+  width:  350px;
+  height: auto;
+}
+
+</style>

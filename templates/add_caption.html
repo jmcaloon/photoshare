@@ -1,0 +1,22 @@
+<!doctype html>
+
+{% if message %}
+  <h4>{{message}}</h4>
+{% endif %}
+<title>Photoshare</title>
+
+<form method="post" enctype="multipart/form-data" action="/add_caption/{{photo_id}}">
+
+<label for="tag">Enter Caption:</label>
+                <input type="text" id = "caption" name="caption" required = 'true'/>
+ <input type="submit" value="Enter" id= "submit_button"/>
+<br>
+
+
+
+
+ </form>
+
+ <a href='/photo/{{photo_id}}'>Back to photo</a>
+<br>
+ <a href='/'>Home</a>

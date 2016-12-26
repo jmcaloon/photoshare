@@ -1,0 +1,66 @@
+<!doctype html>
+{% if message %}
+  <h4>{{message}}</h4>
+{% endif %}
+<title>Photoshare</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% endif %}
+
+Hometown: {{hometown}}<br>
+Birthday: {{dob}}<br>
+
+{% if friends %}
+    <ul style="list-style: none;">
+    <h2>Here's your friends</h2>
+    {% for friend in friends %}
+        <li> {{friend}}<br>
+    {% endfor %}
+    </ul>
+
+{% endif %}
+
+
+
+
+
+<a href = "/add_friends">Add Friends</a><br>
+
+
+<a href = "/you_may_also_like">You may also like</a><br>
+
+{% if albums %}
+    <h2>View your photos by album </h2>
+    <ul style="list-style: none;">
+    {% for album in albums %}
+    	<li>  <a href = "/albumpage/{{album[0]}}">{{album[2]}}</a> <form action="/delete_album/{{uid}}/{{album[0]}}">
+    <input type="submit" value="Delete this album" /> </li></form>
+        <br>
+    {% endfor %}
+    </ul>
+
+{% else %}
+
+<a href = "/upload">Add Photos</a><br>
+
+{% endif %}
+
+{% if tags %}
+    <ul style="list-style: none;">
+    <h2>View your photos by tags </h2>
+    {% for tag in tags %}
+        <li>  <a href = "/tagpage/{{uid}}/{{tag}}">{{tag}}</a> </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+<br>
+<a href='/'>Home</a>
+
+
+<style>
+img {
+  width:  350px;
+  height: auto;
+}
+
+</style>

@@ -1,0 +1,10 @@
+
+
+
+    <h2>Here's all albums</h2>
+    <ul style="list-style: none;">
+    {% for album in albums %}
+    	<li>  <a href = "/albumpage/{{album[0]}}">{{album[2]}}</a> 
+        <br>
+    {% endfor %}
+    </ul>

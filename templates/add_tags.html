@@ -1,0 +1,43 @@
+<!doctype html>
+
+{% if message %}
+  <h4>{{message}}</h4>
+{% endif %}
+<title>Photoshare</title>
+
+<form method="post" enctype="multipart/form-data" action="/add_tags/{{photo_id}}" onsubmit="return validateForm();">
+
+<label for="tag">Add tags separated by commas:</label>
+                <input type="text" id = "tag" name="tag" required = 'true'/>
+ <input type="submit" value="Enter" id= "submit_button"/>
+<br>
+
+
+                 <script>
+
+                function validateForm() {
+
+                    var tags = document.getElementById('tag').value;
+                    tags = tags.split(', ');
+                    for (var i =0; i < tags.length; i++){
+
+                        if (tags[i].includes(' ')){
+                            window.alert("Tags cannot contain spaces")
+                            return false;
+                        }
+
+                    }
+                 return true;
+            }
+
+                </script>
+
+ </form>
+
+ <a href='/photo/{{photo_id}}'>Back to photo</a>
+<br>
+ <a href='/'>Home</a>
+
+
+
+

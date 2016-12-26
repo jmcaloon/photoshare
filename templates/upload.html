@@ -1,0 +1,131 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+
+{% if found_tags %}
+  <h4>Recommended tags:</h4>
+  <ul>
+  {% for tag in found_tags %}
+  <li> {{tag}} </li>
+  {% endfor %}
+  </ul>
+
+{% endif %}
+
+
+<head>
+    <title>Upload a photo!</title>
+</head>
+    <body>
+        <div class="title">
+            <h1>Upload a photo to Photoshare</h1>
+        </div>
+
+            <form method="post" enctype="multipart/form-data" action="/upload" onsubmit="return validateForm();">
+                <label for="file">Select photo:</label>
+                <input type="file" name="file" required='true' /><br />
+
+                <label for="caption">Add caption (optional):</label>
+                <input type="text" name="caption"/><br />
+
+                <label for="tag">Add tags separated by commas (optional):</label>
+                <input type="text" id = "tag" name="tag" /><br />
+
+
+                {% if not albums %}
+                <label for="album">Add to new album:</label>
+                <input type="text" id = "album_id" name="album" required='true'/><br />
+
+                {% endif %}
+
+
+
+                {% if albums %}
+
+                <label for="album">Add to new album:</label>
+                <input type="text" id = "album_id" name="album"/><br />
+
+                <div class="dropdown">
+                    <label for="album_dropdown">Or add to existing album:</label>
+                    <select id="myoptions" name = "myoptions"></select>
+
+ 
+                </div>
+
+
+                <script>
+                //Create dropdown
+                var albs = '{{ albums }}';
+                var albs = albs.replace(/\[&#39;|&#39;\]|&#39;/g, "");
+                var options = albs.split(',')
+                
+
+                var select = document.getElementById('myoptions');
+                if (options.length > 1){
+                    select.options[0] = new Option(options[''])
+                    for(var i=0; i<options.length; i++)
+                        select.options[i+1] = new Option(options[i], options[i]);
+                    }
+
+                else{
+                    select.options[0] = new Option(options['']);
+                    select.options[1] = new Option(options[0]);
+                }
+
+
+                </script>
+                {% endif %}
+                <input type="submit" value="Upload" id= "submit_button"/>
+
+            </form>
+
+
+            <form method="post" enctype="multipart/form-data" action="/upload" onsubmit="return validateTags();">
+                <label for="tag">Or enter  comma-separated tags and we'll recommend some (optional):</label>
+                <input type="text" id = "possible_tags" name="possible_tags" />
+                <input type="submit" value="Enter" id= "tag_rec"/>
+            </form>
+                <script>
+
+                function validateForm() {
+                    var old_album = document.getElementById('album_id').value;
+                    var new_album = document.getElementById('myoptions').value;
+                    if(old_album == ''  &&  new_album == '' ){
+                        window.alert('Please create a new album or choose an existing one')
+                        return false;
+                    }
+
+                    var tags = document.getElementById('tag').value;
+                    tags = tags.split(', ');
+                    for (var i =0; i < tags.length; i++){
+
+                        if (tags[i].includes(' ')){
+                            window.alert("Tags cannot contain spaces")
+                            return false;
+                        }
+
+                    }
+                 return true;
+            }
+
+            function validateTags() {
+                 var tags = document.getElementById('possible_tags').value;
+                    tags = tags.split(', ');
+                    for (var i =0; i < tags.length; i++){
+
+                        if (tags[i].includes(' ')){
+                            window.alert("Tags cannot contain spaces")
+                            return false;
+                        }
+
+                    }
+                 return true;
+             }
+
+
+                </script>
+
+
+<a href='/'>Home</a>
+
+
+
+</body>

@@ -1,0 +1,16 @@
+<!doctype html>
+
+<title>Photoshare</title>
+
+<form method="post" enctype="multipart/form-data" action="/like_or_comment/{{photo_id}}">
+
+<input type="checkbox" name="like" value="Like">Like<br>
+
+<label for="comment">Comment: </label>
+                <input type="text" id = "comment" name="comment" />
+ <input type="submit" value="Submit like and/or comment" id= "submit_button"/>
+
+<br>
+ <a href="/photo/{{photo_id}}"> Back to photo </a>
+<br>
+ <a href="/"> Home </a>

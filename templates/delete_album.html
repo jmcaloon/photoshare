@@ -1,0 +1,9 @@
+<!doctype html>
+
+<p> Are you sure you want to delete {{album_name}} and all of its photos? </p>
+
+<form method="post" enctype="multipart/form-data" action="/delete_album/{{uid}}/{{album_id}}" >
+
+    <input type="submit" name = "submit" value="Yes"/>
+
+    <input type="submit" name = "submit" value="No" />

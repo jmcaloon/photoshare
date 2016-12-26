@@ -1,0 +1,50 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+<!doctype html>
+
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<title>Photoshare</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% endif %}
+
+<p> Go to <a href='/profile'>profile?</a></p>
+<ul>
+<li><a href='/upload'>Upload a photo</a> </li> 
+<li><a href='/browse_tags'>Browse photos by tags</a> </li> 
+<li><a href='/browse_albums'>Browse photos by album</a> </li> 
+<li><a href='/add_friends'>Add friends</a> </li> 
+<li><p> Top 10 Contributors:<p> </p></li>
+  <ol>
+  {% for name in top_contributors_names %}
+    <li> {{ name }} </li>
+  {% endfor %}
+  </ol>
+
+<li><a href='/logout'>Logout</a></li>
+</ul>
+
+<script type="text/javascript">
+
+function validateForm() {
+
+                    var tags = document.getElementById('tag').value;
+                    tags = tags.split(', ');
+                    for (var i =0; i < tags.length; i++){
+
+                        if (tags[i].includes(' ')){
+                            window.alert("Tags cannot contain spaces")
+                            return false;
+                        }
+
+                    }
+                 return true;
+            }
+
+                </script>
+
+ </form>
+
+
+

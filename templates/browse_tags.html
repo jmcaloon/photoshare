@@ -1,0 +1,45 @@
+<!doctype html>
+
+{% if message %}
+  <h4>{{message}}</h4>
+{% endif %}
+<title>Photoshare</title>
+
+<form method="post" enctype="multipart/form-data" action="/browse_tags" onsubmit="return validateForm();">
+
+<label for="tag">Search for tags separated by commas:</label>
+                <input type="text" id = "tag" name="tag" />
+ <input type="submit" value="Enter" id= "submit_button"/>
+<br>
+
+Most Popular Tags: 
+<ol>
+{% for tag in top_tags %}
+    <li><a href = "/tagpage_public/{{tag}}">{{tag}}</a></li>
+{% endfor %}
+</ol>
+
+<br>
+<a href='/'>Back to Home</a>
+
+    <script>
+
+        function validateForm() {
+
+                var tags = document.getElementById('tag').value;
+                tags = tags.split(', ');
+                for (var i =0; i < tags.length; i++){
+
+                    if (tags[i].includes(' ')){
+                        window.alert("Tags cannot contain spaces")
+                        return false;
+                        }
+
+                    }
+                 return true;
+            }
+
+                </script>
+
+ </form>
+

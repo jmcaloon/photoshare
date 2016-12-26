@@ -1,0 +1,23 @@
+
+<h1> You may also like: </h1>
+
+{% if photos %}
+    <ul style="list-style: none;">
+    {% for photo in photos %}
+
+
+        <li><a href="/photo/{{photo[0]}}">
+
+        <img src='data:image/png;base64, {{photo[3]}}'/></a></li><br>
+
+    {% endfor %}
+    </ul>
+{% endif %}
+<a href='/'>Home</a>
+<style>
+img {
+  width:  350px;
+  height: auto;
+}
+
+</style>

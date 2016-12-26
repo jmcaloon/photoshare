@@ -1,0 +1,19 @@
+<!doctype html>
+
+{% if message %}
+  <h4>{{message}}</h4>
+{% endif %}
+<title>Photoshare</title>
+
+
+
+<form method="post" enctype="multipart/form-data" action="/add_friends" onsubmit="return validateForm();">
+
+	<label for="tag">To add a friend, type in their email:</label>
+                <input type="email" id = "friend" name="friend" />
+	<input type="submit" value="Enter" id= "submit_button"/> 
+
+ </form></br>
+
+
+ <a href='/'>Home</a>

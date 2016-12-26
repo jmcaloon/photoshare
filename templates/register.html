@@ -1,0 +1,54 @@
+<!-- author ben lawson balawson@bu.edu -->
+<head>
+    <title>Create an account!</title>
+</head>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+
+
+
+
+    <body>
+        <div class="title">
+            <h1>Enter your information below</h1>
+        </div>
+        <div id="content">
+            <form method="post" action="{{ url_for('register_user') }}">
+                <label for="email">Enter your email&#42:</label>
+                <input type="email" name="email" /><br />
+
+                <label for="password">Enter password&#42:</label>
+                <input type="password" name="password" /><br />
+
+                <label for="first_name">Enter first name&#42:</label>
+                <input type="first_name" name="first_name" /><br />
+
+                <label for="last_name">Enter last name&#42:</label>
+                <input type="last_name" name="last_name" /><br />
+
+                <label for="dob">Enter date of birth&#42 (mm/dd/yyy):</label>
+                <input type="dob" name="dob" /><br />
+
+                <label for="hometown">Enter hometown:</label>
+                <input type="hometown" name="hometown" /><br />
+
+                <label for="gender">Enter gender:</label>
+                <input type="gender" name="gender" /><br />
+
+
+
+                <input type="submit" />
+            </form>
+         </div>
+         <p> &#42required </p>
+    </body>
+<a href='/'>Home</a>
